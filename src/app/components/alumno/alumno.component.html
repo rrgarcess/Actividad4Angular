@@ -1,0 +1,39 @@
+<div class="jumbotron" style="background-color: black;">
+  <h1>ACTIVIDAD 4</h1>
+  <h3>Alumnos</h3>
+</div>
+
+<div class="container">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" (click)="prevAlumno()">
+        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+      </li>
+
+      <li *ngFor="let alumno of alumnos" class="page-item" [ngClass]="{ 'active':alumnoActivo.id == alumno.id }" (click)="activarAlumno(alumno)">
+        <a class="page-link" href="#">{{ alumno.id }}</a>
+      </li>
+
+      <li class="page-item" (click)="nextAlumno()">
+        <a class="page-link" href="#">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div *ngIf="alumnoActivo" class="card" style="margin: auto">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-3">
+          <img *ngIf="alumnoActivo.sexo == 'M'" class="avatar" src="./../../../assets/images/avatar-male.png" >
+          <img *ngIf="alumnoActivo.sexo == 'F'" class="avatar" src="./../../../assets/images/avatar-female.png" >
+        </div>
+        <div class="col-9">
+          <h2 class="card-title">Nombre: {{ alumnoActivo.nombre }}</h2>
+          <h5>Apellidos: {{ alumnoActivo.apellidos }} </h5>
+          <h5>Matricula: {{ alumnoActivo.matricula }}</h5>
+          <h5>Sexo: {{ alumnoActivo.sexo }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
